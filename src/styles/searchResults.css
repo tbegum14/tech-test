@@ -1,0 +1,18 @@
+
+.card-image-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.card-image{
+    height: 200px;
+    width: auto;
+    margin: 10px;
+}
+
+.title {
+    margin:20px;
+    font-weight: bold;
+    font-size: larger;
+}
