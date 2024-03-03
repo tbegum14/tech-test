@@ -1,29 +1,29 @@
-import { React } from "react";
+import { React, useState } from "react";
 import "../styles/search.css";
 import getImages from "../requests/getImages";
 
-export default function Search({ searchText, setSearchText }) {
+export default function Search({ setSearchResults }) {
+    const [value, setValue] = useState("")
+
 	const handleInputChange = (event) => {
-		setSearchText(event.target.value);
+		setValue(event.target.value);
 	};
 
-    const handleSubmit = (event) =>{
+    const handleSubmit = async (event) =>{
         event.preventDefault()
-        return getImages(searchText)
+        setSearchResults(await getImages(value))
     }
+
 	return (
-		<>
 			<form className="search-form" onSubmit={handleSubmit}>
 				<input
 					className="search-input"
 					type="text"
 					onChange={handleInputChange}
-					value={searchText}
 				/>
 				<button className="search-button" type="submit" >
 					Search
 				</button>
 			</form>
-		</>
 	);
 }
